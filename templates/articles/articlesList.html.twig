@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quantum PVP | Articles{% endblock %}
+
+{% block body %}
+    <div class="container flex justify-center items-center">
+        {% for article in articles %}
+            {{ article.name|e }}
+            <img src="{{ article.image }}" alt="">
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
+@import "tailwindcss/components";
+
+.roboto {
+    font-family: "Roboto Thin", sans-serif;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #303030;
+}
+
+.group:hover span {
+    width: 100%;
+}

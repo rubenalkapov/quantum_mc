@@ -3,15 +3,53 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="icon" href="{{ asset('images/icon.ico') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <header class="p-4 bg-orange-300 roboto">
+        <div class="flex items-center justify-center">
+            <a href="/" aria-current="page" class="text-lg font-bold text-gray-900">
+                <img src="{{ asset('images/minecraft_title.png') }}" width="100" height="100" alt="Logo Serveur Quantum" draggable="false">
+            </a>
+            <div class="flex items-center ml-auto">
+                <nav>
+                    <ul class="flex space-x-12">
+                        <li class="relative group">
+                            <a href="/articles" class="text-white hover:text-gray-400">News</a>
+                            <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
+                        </li>
+                        <li class="relative group">
+                            <a href="/wiki" class="text-white hover:text-gray-400">Wiki</a>
+                            <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
+                        </li>
+                        <li class="relative group">
+                            <a href="/jouer" class="text-white hover:text-gray-400">Jouer</a>
+                            <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="ml-10">
+                    {% if app.user and app.user.avatarHash %}
+                        <button onclick="window.location.href='/logout'" class='bg-blue-500 hover:bg-blue-700 text-white font-bold rounded flex items-center xl:py-2 xl:px-4'>
+                            <img class='rounded-full w-8 h-8 mr-2' draggable='false' src='https://cdn.discordapp.com/avatars/{{ app.user.discordId }}/{{ app.user.avatarHash }}.jpg' alt='Avatar' />
+                            Se déconnecter
+                        </button>
+                    {% else %}
+                        <button onclick='window.location.href="/auth/discord/start"' class="bg-blue-500 hover:bg-blue-700 text-white lg:text-sm text-xs font-bold py-2 px-4 rounded flex items-center">Se connecter</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    {% block body %}{% endblock %}
     </body>
 </html>
