@@ -23,6 +23,12 @@
             <div class="flex items-center ml-auto">
                 <nav>
                     <ul class="flex space-x-12">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="relative group">
+                                <a href="/admin" class="text-white hover:text-gray-400">Administration</a>
+                                <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
+                            </li>
+                        {% endif %}
                         <li class="relative group">
                             <a href="/articles" class="text-white hover:text-gray-400">News</a>
                             <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
