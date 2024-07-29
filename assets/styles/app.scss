@@ -21,3 +21,33 @@ body {
 .group:hover span {
     width: 100%;
 }
+
+.animated-image {
+    animation: upanddown 6s linear infinite;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: upanddown;
+    animation-timeline: auto;
+    animation-range-start: normal;
+    animation-range-end: normal;
+    width: 20%;
+}
+
+@keyframes upanddown {
+    0% {
+        transform: translatey(0)
+    }
+
+    50% {
+        transform: translatey(-5%)
+    }
+
+    to {
+        transform: translatey(0)
+    }
+}

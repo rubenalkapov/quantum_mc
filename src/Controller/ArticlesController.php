@@ -18,7 +18,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ArticlesController extends AbstractController
 {
-    private $security;
+    private Security $security;
 
     public function __construct(Security $security)
     {
@@ -88,11 +88,5 @@ class ArticlesController extends AbstractController
         return $this->render('articles/show.html.twig', [
             'article' => $articles,
         ]);
-    }
-
-    #[Route('/access-denied', name: 'access_denied')]
-    public function accessDenied(): RedirectResponse
-    {
-        return $this->redirectToRoute('home');
     }
 }

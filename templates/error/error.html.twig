@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quantum PVP | Erreur {{ code }}{% endblock %}
+
+{% block body %}
+    <div class="flex justify-center mx-auto items-center flex-col mt-28">
+        <h1 class="text-white text-4xl font-semibold roboto">Erreur <span class="text-amber-600">{{ code }}</span></h1>
+        {% if code == 404 %}
+            <p class="text-white text-3xl font-semibold roboto">La page que vous cherchez n'existe pas.</p>
+        {% else %}
+            <p class="text-white text-3xl font-semibold roboto">Une erreur est survenue. Veuillez réessayer plus tard.</p>
+        {% endif %}
+        <img class="mt-10" src="{{ asset('images/screenshot.png') }}" alt="" draggable="false">
+    </div>
+{% endblock %}
