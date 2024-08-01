@@ -26,4 +26,10 @@ class HomeController extends AbstractController
     {
         return $this->render('play/play.html.twig');
     }
+
+    #[Route('/reglement', name: 'reglement')]
+    public function reglement(): Response
+    {
+        return $this->render('reglement/reglement.html.twig');
+    }
 }
