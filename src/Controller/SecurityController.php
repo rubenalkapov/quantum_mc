@@ -14,7 +14,7 @@ class SecurityController extends AbstractController
      * @throws \Exception
      */
     #[Route('/logout', name: 'app_logout')]
-    public function logout()
+    public function logout(): Response
     {
         return $this->redirectToRoute('home');
     }

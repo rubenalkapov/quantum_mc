@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./templates/**/*.html.twig"],
+  content: [
+      "./templates/**/*.html.twig",
+      "./node_modules/flowbite/**/*.js"
+  ],
   theme: {
     extend: {},
     screens: {
@@ -32,6 +35,8 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     }
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 

@@ -15,68 +15,110 @@
         {% endblock %}
     </head>
     <body>
-    <header class="p-4 bg-gray-700 roboto">
-        <div class="flex items-center justify-between">
-            <a href="/" aria-current="page" class="text-lg font-bold text-gray-900">
+
+
+    <nav class="bg-gray-700 roboto">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('images/minecraft_title.png') }}" width="100" height="100" alt="Logo Serveur Quantum" draggable="false">
             </a>
-            <div class="md:hidden">
-                <button id="menu-toggle" class="focus:outline-none">
-                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-            <nav id="menu" class="hidden md:flex items-center ml-auto">
-                <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-12">
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Ouvrir le menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-500 rounded-lg bg-gray-700 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="relative group flex items-center">
-                            <a href="/admin" class="text-white hover:text-gray-400">Administration</a>
-                            <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
+                        <li class="flex items-center">
+                            <a href="/admin" class="block py-2 px-3 text-white rounded hover:text-orange-500">Administration</a>
                         </li>
                     {% endif %}
-                    <li class="relative group flex items-center">
-                        <a href="/articles" class="text-white hover:text-gray-400">News</a>
-                        <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
-                    </li>
-                    <li class="relative group flex items-center">
-                        <a href="/reglement" class="text-white hover:text-gray-400">Règlement</a>
-                        <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
-                    </li>
-                    <li class="relative group flex items-center">
-                        <a href="/wiki" class="text-white hover:text-gray-400">Wiki</a>
-                        <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
-                    </li>
-                    <li class="relative group flex items-center">
-                        <a href="/jouer" class="text-white hover:text-gray-400">Jouer</a>
-                        <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>
+                    <li class="flex items-center">
+                        <a href="/" class="block py-2 px-3 text-white rounded hover:text-orange-500">Accueil</a>
                     </li>
                     <li class="flex items-center">
-                        {% if app.user and app.user.avatarHash %}
-                            <a href="/logout" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded flex items-center xl:py-2 xl:px-4 lg:py-1 lg:px-1 md:py-1 md:px-1">
-                                <img class='rounded-full w-8 h-8 mr-2' draggable='false' src='https://cdn.discordapp.com/avatars/{{ app.user.discordId }}/{{ app.user.avatarHash }}.jpg' alt='Avatar' />
-                                Se déconnecter
-                            </a>
-                        {% else %}
-                            <a href="/auth/discord/start" class="bg-blue-500 hover:bg-blue-700 text-white lg:text-sm text-xs font-bold py-2 px-4 rounded flex items-center">
-                                Se connecter
-                            </a>
-                        {% endif %}
+                        <a href="/articles" class="block py-2 px-3 text-white rounded hover:text-orange-500">News</a>
                     </li>
+                    <li class="flex items-center">
+                        <a href="/wiki" class="block py-2 px-3 text-white rounded hover:text-orange-500">Wiki</a>
+                    </li>
+                    <li class="flex items-center">
+                        <a href="/reglement" class="block py-2 px-3 text-white rounded hover:text-orange-500">Règlement</a>
+                    </li>
+                    <li class="flex items-center">
+                        <a href="/jouer" class="block py-2 px-3 text-white rounded hover:text-orange-500">Jouer</a>
+                    </li>
+                    {% if app.user and app.user.avatarHash %}
+                        <li class="flex items-center">
+                            <a href="/logout" class="px-2 py-1 bg-blue-500 hover:bg-blue-700 inline text-white rounded hover:text-orange-500">
+                                Se déconnecter
+                                <img class='inline rounded-full w-8 h-8 mr-2' draggable='false' src='https://cdn.discordapp.com/avatars/{{ app.user.discordId }}/{{ app.user.avatarHash }}.jpg' alt='Avatar' />
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="flex items-center">
+                            <a href="/auth/discord/start" class="block py-2 px-3 text-white rounded hover:text-orange-500">Se connecter</a>
+                        </li>
+                    {% endif %}
                 </ul>
-            </nav>
+            </div>
         </div>
-    </header>
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            let menu = document.getElementById('menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
-        });
-    </script>
+    </nav>
+
+{#    <header class="p-4 bg-gray-700 roboto">#}
+{#        <div class="flex items-center justify-between">#}
+{#            <a href="/" aria-current="page" class="text-lg font-bold text-gray-900">#}
+{#                <img src="{{ asset('images/minecraft_title.png') }}" width="100" height="100" alt="Logo Serveur Quantum" draggable="false">#}
+{#            </a>#}
+{#            <div class="md:hidden">#}
+{#                <button id="menu-toggle" class="focus:outline-none">#}
+{#                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">#}
+{#                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>#}
+{#                    </svg>#}
+{#                </button>#}
+{#            </div>#}
+{#            <nav id="menu" class="hidden md:flex items-center ml-auto">#}
+{#                <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-12">#}
+{#                    {% if is_granted('ROLE_ADMIN') %}#}
+{#                        <li class="relative group flex items-center">#}
+{#                            <a href="/admin" class="text-white hover:text-gray-400">Administration</a>#}
+{#                            <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>#}
+{#                        </li>#}
+{#                    {% endif %}#}
+{#                    <li class="relative group flex items-center">#}
+{#                        <a href="/articles" class="text-white hover:text-gray-400">News</a>#}
+{#                        <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>#}
+{#                    </li>#}
+{#                    <li class="relative group flex items-center">#}
+{#                        <a href="/reglement" class="text-white hover:text-gray-400">Règlement</a>#}
+{#                        <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>#}
+{#                    </li>#}
+{#                    <li class="relative group flex items-center">#}
+{#                        <a href="/wiki" class="text-white hover:text-gray-400">Wiki</a>#}
+{#                        <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>#}
+{#                    </li>#}
+{#                    <li class="relative group flex items-center">#}
+{#                        <a href="/jouer" class="text-white hover:text-gray-400">Jouer</a>#}
+{#                        <span class="absolute left-0 bottom-0 h-0.5 bg-white opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-300"></span>#}
+{#                    </li>#}
+{#                    <li class="flex items-center">#}
+{#                        {% if app.user and app.user.avatarHash %}#}
+{#                            <a href="/logout" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded flex items-center xl:py-2 xl:px-4 lg:py-1 lg:px-1 md:py-1 md:px-1">#}
+{#                                <img class='rounded-full w-8 h-8 mr-2' draggable='false' src='https://cdn.discordapp.com/avatars/{{ app.user.discordId }}/{{ app.user.avatarHash }}.jpg' alt='Avatar' />#}
+{#                                Se déconnecter#}
+{#                            </a>#}
+{#                        {% else %}#}
+{#                            <a href="/auth/discord/start" class="bg-blue-500 hover:bg-blue-700 text-white lg:text-sm text-xs font-bold py-2 px-4 rounded flex items-center">#}
+{#                                Se connecter#}
+{#                            </a>#}
+{#                        {% endif %}#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </nav>#}
+{#        </div>#}
+{#    </header>#}
     {% block body %}{% endblock %}
     </body>
 </html>

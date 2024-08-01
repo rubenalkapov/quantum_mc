@@ -1,3 +1,51 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Quantum PVP | Règlement{% endblock %}
+
+{% block body %}
+    <div class="w-full flex flex-col justify-center items-center mt-10 px-4">
+        <h1 class="text-white text-3xl mb-8 roboto">Règlement du serveur</h1>
+
+        <div class="w-full md:w-2/4">
+            <details class="mb-4 bg-gray-800 p-4 rounded-lg border border-orange-500">
+                <summary class="cursor-pointer text-lg text-white font-bold">Partie n°1: Comportement général</summary>
+                <p class="mt-2 text-white">
+                    Le respect entre les joueurs est primordial. Les insultes, propos discriminatoires, harcèlement, et tout comportement toxique sont strictement interdits.
+                    Veuillez également éviter le spam et les actions de provocation dans le chat du jeu.
+                </p>
+            </details>
+
+            <details class="mb-4 bg-gray-800 p-4 rounded-lg border border-orange-500">
+                <summary class="cursor-pointer text-lg text-white font-bold">Partie n°2: Triche et exploit</summary>
+                <p class="mt-2 text-white">
+                    L'utilisation de mods non autorisés, cheats, hacks ou tout autre outil donnant un avantage injuste est formellement interdite.
+                    Tout bug ou exploit découvert doit être immédiatement signalé à l'administration du serveur.
+                </p>
+            </details>
+
+            <details class="mb-4 bg-gray-800 p-4 rounded-lg border border-orange-500">
+                <summary class="cursor-pointer text-lg text-white font-bold">Partie n°3: Construction et grief</summary>
+                <p class="mt-2 text-white">
+                    Le griefing (destruction ou modification des constructions des autres joueurs sans autorisation) est interdit.
+                    Respectez les constructions et les propriétés des autres. Les constructions offensantes ou inappropriées ne sont pas tolérées.
+                </p>
+            </details>
+
+            <details class="mb-4 bg-gray-800 p-4 rounded-lg border border-orange-500">
+                <summary class="cursor-pointer text-lg text-white font-bold">Partie n°4: Publicité</summary>
+                <p class="mt-2 text-white">
+                    La publicité pour d'autres serveurs ou produits, de manière directe ou indirecte, est interdite sur toutes les plateformes liées au serveur Quantum PVP.
+                </p>
+            </details>
+
+            <details class="mb-4 bg-gray-800 p-4 rounded-lg border border-orange-500">
+                <summary class="cursor-pointer text-lg text-white font-bold">Partie n°5: Comptes et sécurité</summary>
+                <p class="mt-2 text-white">
+                    Chaque joueur est responsable de la sécurité de son compte. Ne partagez pas vos informations de connexion et veillez à utiliser un mot de passe fort.
+                    En cas de compromission, contactez immédiatement un administrateur.
+                </p>
+            </details>
+        </div>
+    </div>
+    <script src="{{ asset('js/reglement.js') }}"></script>
+{% endblock %}
